@@ -4,6 +4,8 @@
 
 플러터(Flutter) - 리소스 파일 저장하기 / 폰트 파일 관리 / assets 폴더 ( v )
 
+플러터(Flutter) 기초 - 텍스트 (Text) ( v )
+
 
 
 

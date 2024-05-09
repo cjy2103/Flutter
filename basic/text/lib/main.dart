@@ -30,13 +30,15 @@ class MainApp extends StatelessWidget {
                 children: [
                   Text("메이플 볼드체", style: TextStyle(
                     fontSize: 22,
-                    fontFamily: 'MapleStoryBold'
+                    fontFamily: 'MapleStoryBold',
+                    color: Colors.lightBlueAccent
                     )
                   ),
                   SizedBox(width: 10),
                   Text("메이플 라이트체", style: TextStyle(
                     fontSize: 22,
-                    fontFamily: 'MapleStoryLight'
+                    fontFamily: 'MapleStoryLight',
+                    color: Colors.tealAccent
                     )
                   )
                 ],

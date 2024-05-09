@@ -18,9 +18,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  assets:
-    - assets/font/
-
   fonts:
     - family: MaplestoryBold
       fonts:

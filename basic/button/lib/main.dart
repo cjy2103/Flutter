@@ -6,39 +6,51 @@ void main() {
   runApp(const MainApp());
 }
 
+
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Padding(padding: const EdgeInsets.only(top: 40.0, left: 20.0),
+        body: Center(
           child : Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+
+              const SizedBox(height: 50.0),
+
               TextButton( onPressed: () {
                   print("TextButton 클릭됨");
-              }, 
+              },
                   child: const Text("TextButton")),
+
+              const SizedBox(height: 20.0),
 
               OutlinedButton( onPressed: () {
                   print("OutlinedButton 클릭됨");
-              }, 
-                  child: const Text("OutlinedButton")),
+              },
+                  child: Text("OutlinedButton"),
+                style: OutlinedButton.styleFrom(
+                  textStyle: TextStyle(color: Colors.black)
+                ),
+              ),
+
+              const SizedBox(height: 20.0),
 
               ElevatedButton(onPressed: (){
 
               }, child: const Text("ElevatedButton")),
 
-              List<bool> _selections = List.generate(3, (index) => false);
+              const SizedBox(height: 20.0),
 
-              ToggleButtons(children: [
-                Icon(Icons.local_cafe),
-                Icon(Icons.fastfood),
-                Icon(Icons.cake)
-              ], isSelected: _selections)
-              
+              IconButton(onPressed: (){
+                print("카페인이 부족해");
+              }, icon: Icon(Icons.coffee_sharp,
+                )
+              )
             ],
           )
         )

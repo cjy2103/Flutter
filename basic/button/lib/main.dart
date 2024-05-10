@@ -32,17 +32,28 @@ class MainApp extends StatelessWidget {
               OutlinedButton( onPressed: () {
                   print("OutlinedButton 클릭됨");
               },
-                  child: Text("OutlinedButton"),
+                  child: Text(
+                    "OutlinedButton"
+                    , style: TextStyle(color: Colors.black)),
                 style: OutlinedButton.styleFrom(
-                  textStyle: TextStyle(color: Colors.black)
+                  side: BorderSide(color: Colors.blue)
                 ),
+
               ),
 
               const SizedBox(height: 20.0),
 
               ElevatedButton(onPressed: (){
 
-              }, child: const Text("ElevatedButton")),
+              }, child: const Text("ElevatedButton",
+                style: TextStyle(color: Colors.black),)
+                ,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.lightBlueAccent,
+                  foregroundColor: Colors.red
+                ),
+
+              ),
 
               const SizedBox(height: 20.0),
 

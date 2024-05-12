@@ -29,6 +29,15 @@ class _MainAppState extends State<MainApp> {
             color: Colors.green,
             selectedColor: Colors.orange,
             fillColor: Colors.tealAccent,
+            splashColor: Colors.purple,
+            // borderRadius: BorderRadius.circular(30),
+            // borderWidth: 5,
+            // borderColor: Colors.pink,
+            // selectedBorderColor: Colors.orange,
+
+            // onPressed: null,
+            // disabledColor: Colors.grey[300],
+            // disabledBorderColor: Colors.blueGrey,
             onPressed: (int index) {
               setState(() {
                 _seletions[index] = !_seletions[index];

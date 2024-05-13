@@ -32,12 +32,11 @@ class MainApp extends StatelessWidget {
                     'https://picsum.photos/200?image=1040',
 
                   ),
-                SizedBox(height: 20.0),
-                Image.network(
-                  'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif')
+                  SizedBox(height: 20.0),
+                  Image.network(
+                    'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif')
                 ],
               )
-
           ,
         ),
       ),

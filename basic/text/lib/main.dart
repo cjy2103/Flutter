@@ -17,7 +17,7 @@ class MainApp extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("하이"),
-              SizedBox(height: 10),
+              SizedBox(height: 10)
               Text("Hello", style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.normal,

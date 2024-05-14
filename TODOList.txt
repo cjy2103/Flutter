@@ -10,7 +10,7 @@
 
 플러터(Flutter) 기초 - Toggle Button ( v )
 
-플러터(Flutter) 기초 - Image ( ) 
+플러터(Flutter) 기초 - Image ( v )
 
 
 

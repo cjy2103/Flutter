@@ -29,8 +29,7 @@ class MainApp extends StatelessWidget {
                   SizedBox(height: 20.0),
 
                   Image.network(
-                    'https://picsum.photos/200?image=1040',
-
+                    'https://i1.ruliweb.com/ori/23/03/22/187099f75715373d2.png',
                   ),
                   SizedBox(height: 20.0),
                   Image.network(

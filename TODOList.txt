@@ -19,13 +19,19 @@
 플러터(Flutter) 기초 - 화면전환 
 
 
+플러터(Flutter) 기타정보 - Android Internet Permission 안줬는데 인터넷 통신이 되는 이유 ( v )
+
+플러터 단점 / 플러터(Flutter) vs 안드로이드 네이티브(Android Native) ( v )
+
+=================== 오류 =======================
+
 플러터(Flutter) 설치 오류 -  Android toolchain - develop for Android devices (Android SDK version 34.0.0) ( v )
 
 플러터(Flutter) 오류 - Unresolved reference: FlutterActivity/ Gradle task assembleDebug failed  ( v )
 
-플러터(Flutter) 기타정보 - Android Internet Permission 안줬는데 인터넷 통신이 되는 이유 ( v )
 
-플러터 단점 / 플러터(Flutter) vs 안드로이드 네이티브(Android Native) ( v )
+
+플러터(Flutter) 오류 - Navigator operation requested with a context that does not include a Navigator. ( v )
 
 
 

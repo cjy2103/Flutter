@@ -3,8 +3,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+
+import '../../util/url_loader.dart';
 import 'leechunhyang.dart';
 
 class TamTamScreen extends StatelessWidget {
@@ -23,7 +24,7 @@ class TamTamScreen extends StatelessWidget {
               width: 200,
               height: 200,
             ),
-            Text("탬탬버린"),
+            Text('탬탬버린'),
             SizedBox(height: 10.0),
             RichText(
               text: TextSpan(
@@ -35,7 +36,9 @@ class TamTamScreen extends StatelessWidget {
                   TextSpan(
                       text: 'https://www.youtube.com/@chamcham2',
                       style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
-                      recognizer: TapGestureRecognizer()..onTap = _launchYouTubeChannel
+                      recognizer: TapGestureRecognizer()..onTap = () async {
+                        await Util().launchYouTubeChannel('https://www.youtube.com/@chamcham2');
+                      }
                   ),
                 ],
               ),
@@ -61,15 +64,5 @@ class TamTamScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _launchYouTubeChannel() async {
-    const url = 'https://www.youtube.com/@chamcham2';
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
-    } else {
-      // Handle the case where the URL can't be launched
-      print('Could not launch YouTube channel URL');
-    }
   }
 }

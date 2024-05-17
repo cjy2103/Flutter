@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:screen_move/screen/tamtam.dart';
+import 'package:screen_move/screen/ui/tamtam.dart';
 
 
 

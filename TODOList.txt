@@ -29,7 +29,7 @@
 
 플러터(Flutter) 오류 - Unresolved reference: FlutterActivity/ Gradle task assembleDebug failed  ( v )
 
-
+플러터(Flutter) 오류 - Flutter : Target file "lib/main.dart" not found ( v )
 
 플러터(Flutter) 오류 - Navigator operation requested with a context that does not include a Navigator. ( v )
 

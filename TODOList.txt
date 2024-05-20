@@ -14,9 +14,9 @@
 
 플러터(Flutter) 기초 - RichText / 텍스트 글자 다르게 / 하이퍼 링크 형식 만들기 ( v )
 
-플러터(Flutter) 기초 - HyperLink 이동 / 하이퍼링크 이동 ( ) 
+플러터(Flutter) 기초 - HyperLink 이동 / 하이퍼링크 이동 ( v ) 
 
-플러터(Flutter) 기초 - 화면전환 
+플러터(Flutter) 기초 - 화면이동(새화면) / screen move ( v )
 
 
 플러터(Flutter) 기타정보 - Android Internet Permission 안줬는데 인터넷 통신이 되는 이유 ( v )

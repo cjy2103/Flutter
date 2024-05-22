@@ -1,4 +1,4 @@
-import 'package:character_add/presentation/screen/characters_screen.dart';
+import 'package:character_add/presentation/screen/ui/characters_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -5,14 +5,6 @@ import 'package:provider/provider.dart';
 
 const imagePath = 'assets/images/';
 
-List<Character> _list = [
-  Character(name: '탬탬버린', describe: '힐링캠프', imagePath: imagePath + 'tamtam.jpg'),
-  Character(name: '이춘향', describe: '힐링캠프', imagePath: imagePath + 'leechunhyang.jpg'),
-  Character(name:'마뫄', describe: '힐링캠프', imagePath: imagePath + 'mwama.jpg'),
-  Character(name: '삐부', describe: '힐링캠프', imagePath: imagePath + 'bbibu.webp'),
-];
-
-
 class CharacterScreen extends StatefulWidget {
   const CharacterScreen({super.key});
 
@@ -74,9 +66,8 @@ class _ListAppState extends State<CharacterScreen>{
 
   Widget _deleteButton() => InkWell(
     onTap: () {
-      if(_list.length>0){
-        CharacterViewModel viewModel = Provider.of<CharacterViewModel>(context, listen: false);
-
+      CharacterViewModel viewModel = Provider.of<CharacterViewModel>(context, listen: false);
+      if(viewModel.list.isNotEmpty){
         viewModel.deleteItem();
       }
     },
@@ -93,17 +84,33 @@ class _ListAppState extends State<CharacterScreen>{
 
 }
 
-
 Widget _buildList() => Expanded(
-  child: ListView.builder(
-    padding: EdgeInsets.zero,
-    itemCount: _list.length,
-    itemBuilder: (context, index) {
-      final character = _list[index];
-      return _character(character);
+  child: Consumer<CharacterViewModel>(
+    builder: (context, viewModel, child) {
+      return ListView.builder(
+        padding: EdgeInsets.zero,
+        itemCount: viewModel.list.length,
+        itemBuilder: (context, index) {
+          final character = viewModel.list[index];
+          return _character(character);
+        },
+      );
     },
   ),
 );
+
+
+
+// Widget _buildList() => Expanded(
+//   child: ListView.builder(
+//     padding: EdgeInsets.zero,
+//     itemCount: _list.length,
+//     itemBuilder: (context, index) {
+//       final character = _list[index];
+//       return _character(character);
+//     },
+//   ),
+// );
 
 Widget _character(Character character) {
   return Padding(

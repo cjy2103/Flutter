@@ -4,12 +4,18 @@ import 'package:flutter/cupertino.dart';
 import '../../data/Character.dart';
 
 class CharacterViewModel extends ChangeNotifier {
-  List<Character> _list = [
-    Character(name: '탬탬버린', describe: '힐링캠프', imagePath: 'assets/tamtam.jpg'),
-    Character(name: '이춘향', describe: '힐링캠프', imagePath: 'assets/leechunhyang.jpg'),
-    Character(name:'마뫄', describe: '힐링캠프', imagePath: 'assets/mwama.jpg'),
-    Character(name: '삐부', describe: '힐링캠프', imagePath: 'assets/bbibu.webp'),
-  ];
+
+  String imagePath = 'assets/images/';
+  List<Character> _list = [];
+
+  CharacterViewModel() {
+    _list = [
+      Character(name: '탬탬버린', describe: '힐링캠프', imagePath: imagePath + 'tamtam.jpg'),
+      Character(name: '이춘향', describe: '힐링캠프', imagePath: imagePath + 'leechunhyang.jpg'),
+      Character(name: '마뫄', describe: '힐링캠프', imagePath: imagePath + 'mwama.jpg'),
+      Character(name: '삐부', describe: '힐링캠프', imagePath: imagePath + 'bbibu.webp'),
+    ];
+  }
 
   List<Character> get list => _list;
 

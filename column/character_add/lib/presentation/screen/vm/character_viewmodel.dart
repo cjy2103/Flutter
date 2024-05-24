@@ -18,4 +18,9 @@ class CharacterViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void deleteItem(){
+    _list.removeLast();
+    notifyListeners();
+  }
+
 }

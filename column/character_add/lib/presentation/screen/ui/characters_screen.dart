@@ -22,15 +22,6 @@ class CharacterScreen extends StatefulWidget {
 
 class _ListAppState extends State<CharacterScreen>{
 
-
-  void _addItem(String name, String describe, String imagePath){
-    setState(() {
-      _list.add(
-        Character(name: name, describe: describe, imagePath: imagePath)
-      );
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,9 +61,6 @@ class _ListAppState extends State<CharacterScreen>{
         viewModel.addItem(Character(name: '이춘향', describe: '힐링캠프', imagePath: imagePath+'leechunhyang.jpg'));
         viewModel.addItem(Character(name: '마뫄', describe: '힐링캠프', imagePath: imagePath+'mwama.jpg'));
         viewModel.addItem(Character(name: '삐부', describe: '힐링캠프', imagePath: imagePath+'bbibu.webp'));
-        // viewModel._addItem('이춘향', '힐링캠프', imagePath+'leechunhyang.jpg');
-        // viewModel._addItem('마뫄', '힐링캠프', imagePath+'mwama.jpg');
-        // viewModel._addItem('삐부', '힐링캠프', imagePath+'bbibu.webp');
       },
       child: CircleAvatar(
         radius: 30.0,
@@ -87,9 +75,9 @@ class _ListAppState extends State<CharacterScreen>{
   Widget _deleteButton() => InkWell(
     onTap: () {
       if(_list.length>0){
-        setState(() {
-          _list.removeLast();
-        });
+        CharacterViewModel viewModel = Provider.of<CharacterViewModel>(context, listen: false);
+
+        viewModel.deleteItem();
       }
     },
       child: CircleAvatar(

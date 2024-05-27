@@ -20,7 +20,7 @@
 
 플러터(Flutter) 기초 - ListView(리스트 뷰) ( v )
 
-플러터(Flutter) 기초 - ListView 아이템 추가, 제거 ( )
+플러터(Flutter) 기초 - ListView(리스트 뷰) 추가 삭제 / add, remove ( v )
 
 플러터(Flutter) - ListView에 의도치 않은 Padding / ListView 디폴트 패딩 (Default Padding) / 디폴트 마진 ( v )
 

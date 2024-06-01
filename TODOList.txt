@@ -33,6 +33,10 @@
 
 플러터 단점 / 플러터(Flutter) vs 안드로이드 네이티브(Android Native) ( v )
 
+플러터(Flutter) 기타 정보 - TextFiled 크기 조절하는 법 ( v )
+
+
+
 =================== 오류 =======================
 
 플러터(Flutter) 설치 오류 -  Android toolchain - develop for Android devices (Android SDK version 34.0.0) ( v )

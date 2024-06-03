@@ -94,36 +94,41 @@ class CharacterScreen extends StatelessWidget {
       );
 
 
-  Widget _buildList() =>
-      Expanded(
-        child: Consumer<CharacterViewModel>(
-          builder: (context, viewModel, child) {
-            return ListView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: viewModel.list.length,
-              itemBuilder: (context, index) {
-                final character = viewModel.list[index];
-                return _character(character);
-              },
-            );
-          },
-        ),
-      );
+Widget _buildList() =>
+    Expanded(
+      child: Consumer<CharacterViewModel>(
+        builder: (context, viewModel, child) {
+          return ListView.builder(
+            padding: EdgeInsets.zero,
+            itemCount: viewModel.list.length,
+            itemBuilder: (context, index) {
+              final character = viewModel.list[index];
+              return _character(character, index);
+            },
+          );
+        },
+      ),
+    );
 
 
-  Widget _character(Character character) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0), // 수평 방향으로 패딩 추가
+Widget _character(Character character, int index) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+    child: InkWell(
+      onTap: () {
+        // 아이템 클릭 이벤트 처리
+        print('Character ${character.name} clicked at index $index');
+        // 원하는 로직 추가
+      },
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
-            color: const Color(0xFFBABABA), // Row의 테두리 색상
-            width: 1.0, // Row의 테두리 두께
+            color: const Color(0xFFBABABA),
+            width: 1.0,
           ),
-
         ),
         child: Padding(
-          padding: const EdgeInsets.all(0.0), // 내부 패딩 추가
+          padding: const EdgeInsets.all(0.0),
           child: Row(
             children: [
               Container(
@@ -131,10 +136,9 @@ class CharacterScreen extends StatelessWidget {
                 height: 100,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: const Color(0xFFBABABA), // 이미지의 테두리 색상
-                    width: 1.0, // 이미지의 테두리 두께
+                    color: const Color(0xFFBABABA),
+                    width: 1.0,
                   ),
-
                 ),
                 child: ClipRRect(
                   child: Image.asset(
@@ -143,7 +147,6 @@ class CharacterScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,6 +179,7 @@ class CharacterScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 

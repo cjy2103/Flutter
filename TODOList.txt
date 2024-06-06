@@ -26,6 +26,8 @@
 
 플러터(Flutter) 기초 - Splash 화면 만들기 ( v )
 
+플러터(Flutter) 기타정보 - Splash 화면 지우기 ( )
+
 
 플러터(Flutter) 기타정보 - Android Internet Permission 안줬는데 인터넷 통신이 되는 이유 ( v )
 

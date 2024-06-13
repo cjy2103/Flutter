@@ -14,6 +14,8 @@ class _MainAppState extends State<MainApp> {
   final TextEditingController emailEditingController = TextEditingController();
   final TextEditingController passwordEditingController = TextEditingController();
   String password = '';
+  FocusNode myFocusNode = new FocusNode();
+
 
   @override
   void initState() {
@@ -25,12 +27,14 @@ class _MainAppState extends State<MainApp> {
     passwordEditingController.addListener(() {
       setState(() {});
     });
+
   }
 
   @override
   void dispose() {
     emailEditingController.dispose();
     passwordEditingController.dispose();
+    myFocusNode.dispose();
     super.dispose();
   }
 
@@ -50,6 +54,8 @@ class _MainAppState extends State<MainApp> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
+                    labelStyle: TextStyle(color: Colors.grey),
+                    floatingLabelStyle: TextStyle(color: Colors.blue),
                     prefixIcon: Icon(Icons.email),
                     suffixIcon: emailEditingController.text.isNotEmpty
                         ? IconButton(
@@ -59,7 +65,12 @@ class _MainAppState extends State<MainApp> {
                       },
                     )
                         : null,
-                    
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 1.0)
+                    )
                   ),
                 ),
               ),
@@ -72,6 +83,8 @@ class _MainAppState extends State<MainApp> {
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
                     labelText: 'Password',
+                    labelStyle: TextStyle(color: Colors.grey),
+                    floatingLabelStyle: TextStyle(color: Colors.blue),
                     prefixIcon: const Icon(Icons.lock),
                     suffixIcon: passwordEditingController.text.isNotEmpty
                         ? IconButton(
@@ -81,6 +94,12 @@ class _MainAppState extends State<MainApp> {
                       },
                     )
                         : null,
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey, width: 1.0)
+                      )
                   ),
                 ),
               ),

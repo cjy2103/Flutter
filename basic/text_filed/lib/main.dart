@@ -10,7 +10,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController textEditingController = TextEditingController();
+    final TextEditingController emailEditingController = TextEditingController();
+    final TextEditingController passwordEditingController = TextEditingController();
+
     return MaterialApp(
       home: Scaffold(
         body: Center(
@@ -21,10 +23,26 @@ class MainApp extends StatelessWidget {
               SizedBox(
                 width: 300.0,
                 child: TextField(
-                  controller: textEditingController,
+                  controller: emailEditingController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Enter Text',
+                    labelText: 'email',
+                    prefixIcon: Icon(Icons.email)
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 50.0,),
+
+              SizedBox(
+                width: 300.0,
+                child: TextField(
+                  controller: passwordEditingController,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'password',
+                      prefixIcon: Icon(Icons.lock)
                   ),
                 ),
               ),
@@ -34,7 +52,7 @@ class MainApp extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // 버튼이 눌리면 입력된 텍스트를 출력합니다.
-                  print('Entered text: ${textEditingController.text}');
+                  print('Entered text: ${emailEditingController.text}');
                 },
                 child: const Text('Submit'),
               ),

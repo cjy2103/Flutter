@@ -1,16 +1,14 @@
-name: button
+name: permission
 description: "A new Flutter project."
 publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.3.4 <4.0.0'
+  sdk: '>=3.4.1 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  permission_handler: ^10.0.0
-
 
 dev_dependencies:
   flutter_test:

@@ -14,7 +14,8 @@ class _MainAppState extends State<MainApp> {
   final TextEditingController emailEditingController = TextEditingController();
   final TextEditingController passwordEditingController = TextEditingController();
   String password = '';
-  FocusNode myFocusNode = new FocusNode();
+  FocusNode emailFocusNode = new FocusNode();
+  FocusNode passwordFocusNode = new FocusNode();
 
 
   @override
@@ -34,7 +35,8 @@ class _MainAppState extends State<MainApp> {
   void dispose() {
     emailEditingController.dispose();
     passwordEditingController.dispose();
-    myFocusNode.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
     super.dispose();
   }
 
@@ -51,12 +53,16 @@ class _MainAppState extends State<MainApp> {
                 width: 300.0,
                 child: TextField(
                   controller: emailEditingController,
+                  focusNode: emailFocusNode,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
                     labelStyle: TextStyle(color: Colors.grey),
-                    floatingLabelStyle: TextStyle(color: Colors.blue),
-                    prefixIcon: Icon(Icons.email),
+                    floatingLabelStyle: TextStyle(
+                      color: emailFocusNode.hasFocus ? Colors.blue : Colors.grey,
+                    ),
+
+                      prefixIcon: Icon(Icons.email),
                     suffixIcon: emailEditingController.text.isNotEmpty
                         ? IconButton(
                       icon: const Icon(Icons.cancel),
@@ -79,12 +85,15 @@ class _MainAppState extends State<MainApp> {
                 width: 300.0,
                 child: TextField(
                   controller: passwordEditingController,
+                  focusNode: passwordFocusNode,
                   obscureText: true,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
                     labelText: 'Password',
                     labelStyle: TextStyle(color: Colors.grey),
-                    floatingLabelStyle: TextStyle(color: Colors.blue),
+                      floatingLabelStyle: TextStyle(
+                        color: passwordFocusNode.hasFocus ? Colors.blue : Colors.grey,
+                      ),
                     prefixIcon: const Icon(Icons.lock),
                     suffixIcon: passwordEditingController.text.isNotEmpty
                         ? IconButton(

@@ -17,13 +17,18 @@ class _MainAppState extends State<MainApp> {
   FocusNode emailFocusNode = new FocusNode();
   FocusNode passwordFocusNode = new FocusNode();
 
+  bool isButtonEnabled = false;
+
 
   @override
   void initState() {
     super.initState();
     emailEditingController.addListener(() {
-      setState(() {});
+      setState(() {
+        isButtonEnabled = emailEditingController.text.isNotEmpty;
+      });
     });
+
 
     passwordEditingController.addListener(() {
       setState(() {});
@@ -114,12 +119,12 @@ class _MainAppState extends State<MainApp> {
               ),
               const SizedBox(height: 50.0),
               ElevatedButton(
-                onPressed: () {
+                onPressed: isButtonEnabled ? () {
                   // 버튼이 눌리면 입력된 패스워드를 Text 위젯에 전달
                   setState(() {
                     password = passwordEditingController.text;
                   });
-                },
+                } : null,
                 child: const Text('Submit'),
               ),
               const SizedBox(height: 50.0),

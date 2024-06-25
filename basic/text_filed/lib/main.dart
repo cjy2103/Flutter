@@ -18,6 +18,7 @@ class _MainAppState extends State<MainApp> {
   FocusNode passwordFocusNode = new FocusNode();
 
   bool isButtonEnabled = false;
+  bool isPasswordObscured = true;
 
 
   @override
@@ -29,11 +30,16 @@ class _MainAppState extends State<MainApp> {
       });
     });
 
-
     passwordEditingController.addListener(() {
       setState(() {});
     });
 
+  }
+
+  void _togglePasswordVisibility(){
+    setState(() {
+      isPasswordObscured = !isPasswordObscured;
+    });
   }
 
   @override
@@ -91,7 +97,7 @@ class _MainAppState extends State<MainApp> {
                 child: TextField(
                   controller: passwordEditingController,
                   focusNode: passwordFocusNode,
-                  obscureText: true,
+                  obscureText: isPasswordObscured,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
                     labelText: 'Password',
@@ -100,14 +106,15 @@ class _MainAppState extends State<MainApp> {
                         color: passwordFocusNode.hasFocus ? Colors.blue : Colors.grey,
                       ),
                     prefixIcon: const Icon(Icons.lock),
-                    suffixIcon: passwordEditingController.text.isNotEmpty
-                        ? IconButton(
-                      icon: const Icon(Icons.cancel),
-                      onPressed: () {
-                        passwordEditingController.clear();
-                      },
-                    )
-                        : null,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        isPasswordObscured ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: (){
+                        _togglePasswordVisibility();
+                      }
+                      ,
+                    ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.blue, width: 2.0),
                       ),

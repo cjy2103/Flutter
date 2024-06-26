@@ -36,8 +36,7 @@
 
 플러터(flutter) 기초 - TextField 예제 ( v )
 
-플러터(Flutter) - 버튼 Enabled/UnEnabled 제어하기 ( )
-
+플러터(Flutter) - 버튼 Enabled/UnEnabled 제어하기 ( v )
 
 =================== 오류 =======================
 

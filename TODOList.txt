@@ -40,7 +40,7 @@
 
 플러터(Flutter) - TextField 패스워드(비밀번호) visible, Invisible 제어하기 / 패스워드(비밀번호) 보이기, 숨기기 ( v )
 
-플러터(Flutter) - Radio Widget / CheckBox Widget / 라디오 위젯, 체크박스 위젯 예제
+플러터(Flutter) - Radio Widget / CheckBox Widget / 라디오 위젯, 체크박스 위젯 예제 ( v )
 
 
 

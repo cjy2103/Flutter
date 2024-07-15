@@ -113,12 +113,12 @@ class EmailWidget extends StatelessWidget {
             ),
           ),
           SizedBox(height: 16),
-          Text('휴대전화 번호'),
+          Text('이메일'),
           SizedBox(height: 8),
           TextField(
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              hintText: '휴대전화 번호',
+              hintText: '이메일',
             ),
           ),
           SizedBox(height: 16),
@@ -140,11 +140,93 @@ class EmailWidget extends StatelessWidget {
   }
 }
 
-class PhoneWidget extends StatelessWidget {
+class PhoneWidget extends StatefulWidget {
+  @override
+  _PhoneWidgetState createState() => _PhoneWidgetState();
+}
+
+class _PhoneWidgetState extends State<PhoneWidget> {
+  bool isButtonEnabled = false;
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    nameController.addListener(_updateButtonState);
+    phoneController.addListener(_updateButtonState);
+  }
+
+  void _updateButtonState() {
+    setState(() {
+      isButtonEnabled =
+          nameController.text.isNotEmpty && phoneController.text.isNotEmpty;
+    });
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    phoneController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('휴대전화로 아이디 찾기 위젯'),
+    return Padding(
+      padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('이름'),
+          SizedBox(height: 8),
+          TextField(
+            controller: nameController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: '이름',
+            ),
+          ),
+          SizedBox(height: 16),
+          Text('휴대전화 번호'),
+          SizedBox(height: 8),
+          TextField(
+            controller: phoneController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: '휴대전화 번호',
+            ),
+          ),
+          SizedBox(height: 16),
+          SizedBox(
+            width: 320.0,
+            height: 40.0,
+            child: ElevatedButton(
+                onPressed: isButtonEnabled
+                    ? () {
+                  print("로그인");
+                }
+                    : null,
+                style: ButtonStyle(
+                  backgroundColor:
+                  MaterialStateProperty.resolveWith<Color>((states) {
+                    if (states.contains(MaterialState.disabled)) {
+                      return Colors.grey;
+                    }
+                    return Colors.black;
+                  }),
+                  foregroundColor:
+                  MaterialStateProperty.all(Colors.white),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
+                  ),
+                ),
+                child: Text('로그인')),
+          ),
+        ],
+      ),
     );
   }
 }

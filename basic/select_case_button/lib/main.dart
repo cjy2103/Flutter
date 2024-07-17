@@ -88,98 +88,19 @@ class _MyPageState extends State<MyPage>{
           SizedBox(height: 32),
           // 하단에 변경되는 위젯들
           Expanded(
-            child: isEmailSelected ? EmailWidget() : PhoneWidget(),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class EmailWidget extends StatefulWidget {
-  @override
-  _EmailWidgetState createState() => _EmailWidgetState();
-}
-
-class _EmailWidgetState extends State<EmailWidget> {
-  bool isButtonEnabled = false;
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    nameController.addListener(_updateButtonState);
-    emailController.addListener(_updateButtonState);
-  }
-
-  void _updateButtonState() {
-    setState(() {
-      isButtonEnabled =
-          nameController.text.isNotEmpty && emailController.text.isNotEmpty;
-    });
-  }
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 30.0, right: 30.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('이름'),
-          SizedBox(height: 8),
-          TextField(
-            controller: nameController,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: '이름',
-            ),
-          ),
-          SizedBox(height: 16),
-          Text('이메일'),
-          SizedBox(height: 8),
-          TextField(
-            controller: emailController,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
+            child: isEmailSelected
+                ? InputWidget(
+              title: '이메일',
               hintText: '이메일',
+              nameController: TextEditingController(),
+              controller: TextEditingController(),
+            )
+                : InputWidget(
+              title: '휴대전화 번호',
+              hintText: '휴대전화 번호',
+              nameController: TextEditingController(),
+              controller: TextEditingController(),
             ),
-          ),
-          SizedBox(height: 16),
-          SizedBox(
-            width: 320.0,
-            height: 40.0,
-            child: ElevatedButton(
-                onPressed: isButtonEnabled
-                    ? () {
-                  print("로그인");
-                }
-                    : null,
-                style: ButtonStyle(
-                  backgroundColor:
-                  MaterialStateProperty.resolveWith<Color>((states) {
-                    if (states.contains(MaterialState.disabled)) {
-                      return Colors.grey;
-                    }
-                    return Colors.black;
-                  }),
-                  foregroundColor:
-                  MaterialStateProperty.all(Colors.white),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                    ),
-                  ),
-                ),
-                child: Text('로그인')),
           ),
         ],
       ),
@@ -187,34 +108,38 @@ class _EmailWidgetState extends State<EmailWidget> {
   }
 }
 
-class PhoneWidget extends StatefulWidget {
+class InputWidget extends StatefulWidget {
+  final String title;
+  final String hintText;
+  final TextEditingController controller;
+  final TextEditingController nameController;
+
+  InputWidget({required this.title, required this.hintText,, required this.nameController, required this.controller});
+
   @override
-  _PhoneWidgetState createState() => _PhoneWidgetState();
+  _InputWidgetState createState() => _InputWidgetState();
 }
 
-class _PhoneWidgetState extends State<PhoneWidget> {
+class _InputWidgetState extends State<InputWidget> {
   bool isButtonEnabled = false;
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    nameController.addListener(_updateButtonState);
-    phoneController.addListener(_updateButtonState);
+    widget.nameController.addListener(_updateButtonState);
+    widget.controller.addListener(_updateButtonState);
   }
 
   void _updateButtonState() {
     setState(() {
-      isButtonEnabled =
-          nameController.text.isNotEmpty && phoneController.text.isNotEmpty;
+      isButtonEnabled = widget.nameController.text.isNotEmpty && widget.controller.text.isNotEmpty;
     });
   }
 
   @override
   void dispose() {
-    nameController.dispose();
-    phoneController.dispose();
+    widget.nameController.dispose();
+    widget.controller.dispose();
     super.dispose();
   }
 
@@ -228,20 +153,20 @@ class _PhoneWidgetState extends State<PhoneWidget> {
           Text('이름'),
           SizedBox(height: 8),
           TextField(
-            controller: nameController,
+            controller: widget.nameController,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               hintText: '이름',
             ),
           ),
           SizedBox(height: 16),
-          Text('휴대전화 번호'),
+          Text(widget.title),
           SizedBox(height: 8),
           TextField(
-            controller: phoneController,
+            controller: widget.controller,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              hintText: '휴대전화 번호',
+              hintText: widget.hintText,
             ),
           ),
           SizedBox(height: 16),
@@ -255,16 +180,14 @@ class _PhoneWidgetState extends State<PhoneWidget> {
                 }
                     : null,
                 style: ButtonStyle(
-                  backgroundColor:
-                  MaterialStateProperty.resolveWith<Color>((states) {
-                    if (states.contains(MaterialState.disabled)) {
+                  backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+                    if (states.contains(WidgetState.disabled)) {
                       return Colors.grey;
                     }
                     return Colors.black;
                   }),
-                  foregroundColor:
-                  MaterialStateProperty.all(Colors.white),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  foregroundColor: WidgetStateProperty.all(Colors.white),
+                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero,
                     ),
@@ -277,4 +200,3 @@ class _PhoneWidgetState extends State<PhoneWidget> {
     );
   }
 }
-

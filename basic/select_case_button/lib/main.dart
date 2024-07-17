@@ -96,17 +96,48 @@ class _MyPageState extends State<MyPage>{
   }
 }
 
-class EmailWidget extends StatelessWidget {
+class EmailWidget extends StatefulWidget {
+  @override
+  _EmailWidgetState createState() => _EmailWidgetState();
+}
+
+class _EmailWidgetState extends State<EmailWidget> {
+  bool isButtonEnabled = false;
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    nameController.addListener(_updateButtonState);
+    emailController.addListener(_updateButtonState);
+  }
+
+  void _updateButtonState() {
+    setState(() {
+      isButtonEnabled =
+          nameController.text.isNotEmpty && emailController.text.isNotEmpty;
+    });
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: const EdgeInsets.only(left: 30.0,right: 30.0),
+    return Padding(
+      padding: const EdgeInsets.only(left: 30.0, right: 30.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('이름'),
           SizedBox(height: 8),
           TextField(
+            controller: nameController,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               hintText: '이름',
@@ -116,23 +147,39 @@ class EmailWidget extends StatelessWidget {
           Text('이메일'),
           SizedBox(height: 8),
           TextField(
+            controller: emailController,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               hintText: '이메일',
             ),
           ),
           SizedBox(height: 16),
-          Container(
-            width: double.infinity,
+          SizedBox(
+            width: 320.0,
+            height: 40.0,
             child: ElevatedButton(
-              onPressed: () {
-                // 아이디 찾기 로직
-              },
-              style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(Colors.grey),
-              ),
-              child: Text('아이디 찾기'),
-            ),
+                onPressed: isButtonEnabled
+                    ? () {
+                  print("로그인");
+                }
+                    : null,
+                style: ButtonStyle(
+                  backgroundColor:
+                  MaterialStateProperty.resolveWith<Color>((states) {
+                    if (states.contains(MaterialState.disabled)) {
+                      return Colors.grey;
+                    }
+                    return Colors.black;
+                  }),
+                  foregroundColor:
+                  MaterialStateProperty.all(Colors.white),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
+                  ),
+                ),
+                child: Text('로그인')),
           ),
         ],
       ),
@@ -230,3 +277,4 @@ class _PhoneWidgetState extends State<PhoneWidget> {
     );
   }
 }
+

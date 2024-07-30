@@ -114,7 +114,7 @@ class InputWidget extends StatefulWidget {
   final TextEditingController controller;
   final TextEditingController nameController;
 
-  InputWidget({required this.title, required this.hintText,, required this.nameController, required this.controller});
+  InputWidget({required this.title, required this.hintText, required this.nameController, required this.controller});
 
   @override
   _InputWidgetState createState() => _InputWidgetState();
